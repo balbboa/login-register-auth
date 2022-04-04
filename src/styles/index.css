@@ -13,3 +13,8 @@ code {
 }
 
 /*  COMPONENTE AGENTES.JS */
+
+/*  COMPONENTEs DO SIDEBAR */
+.sidebar-menu {
+  white-space: pre-wrap!important;
+}
