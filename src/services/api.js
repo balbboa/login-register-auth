@@ -32,12 +32,6 @@ export default class Create extends Component {
         });
     }
 
-    getRepo = async () => {
-        let data = axios.get('http://localhost:8000/api/agentes').then(({ data }) => data);
-            this.setState({ repo: data})
-            console.log('asdasdsad')
-    }
-
     onSubmit(e) {
         e.preventDefault();
 
@@ -76,7 +70,7 @@ export default class Create extends Component {
                                onChange={this.onChangeMatricula}/>
                     </div>
                     <div className="form-group">
-                        <Button text={"criar"} onClick={this.onSubmit} className="btn btn-primary"/>
+                        <Button text={"criar"} onClick={this.onSubmit} className="btn btn-primary btn-sm"/>
                     </div>
                 </form>
                 <NotificationContainer/>

@@ -3,6 +3,9 @@ import '../styles/index.css';
 import axios from 'axios';
 import AdminLTE, { Button, Box, Content } from 'adminlte-2-react';
 import Create from '../services/api';
+import Update from '../services/updateApi';
+import { Link } from 'react-router-dom';
+
 
 const api = axios.create({
   baseURL: 'http://localhost:8000/api'
@@ -56,15 +59,16 @@ class Agentes extends Component {
         <>
         <Content>
         <Create/>
-        <Button onClick={this.createRepo} text={"criar"}/>
         
           {this.state.repo.map(repo => 
           
-              <Box className="d-flex">
+              <Box className="d-flex flex-row align-itens-center">
                 <strong key={repo.id}>{repo.nome}</strong>
                 <p>{repo.matricula}</p>
                 <Button onClick={()=>this.deleteRepo(repo.id)} text={"deletar"}/>
-                <Button onClick={()=>this.updateRepo(repo.id, `${repo.nome}a`)} text={"editar"}/>
+                <Link to='agentes/update'>
+                  <Button onClick={Update} text={"editar"}/>
+                </Link>
               </Box>
 
           )}

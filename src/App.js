@@ -5,6 +5,7 @@ import Agentes from './components/agentes'
 import './styles/index.css'; 
 import { BrowserRouter as Router, BrowserRouter, Route } from 'react-router-dom';
 import Create from './services/api';
+import Update from './services/updateApi';
 
 const { Item } = Sidebar;
 const {
@@ -80,9 +81,7 @@ class App extends Component {
           </Navbar.Core>
           <HelloWorld path="/hello-world" />
           <Agentes path="/agentes" />
-          <BrowserRouter>
-              <Route exact path='/create' component={ Create } />
-          </BrowserRouter>
+          <Update path="/agentes/update" />
         </AdminLTE>
       </Router>
     );
