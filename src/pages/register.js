@@ -1,7 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert'
+
+axios.defaults.headers.post['Accept'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default function Register() {
+    const navigate = useNavigate();
 
     const [registerInput, setRegister] = useState({
         name: '',
@@ -11,7 +17,7 @@ export default function Register() {
     });
 
     const handleInput = (e) => {
-        e.presist();
+        e.persist();
         setRegister({...registerInput, [e.target.name]: e.target.value});
     }
 
@@ -23,11 +29,15 @@ export default function Register() {
             email: registerInput.email,
             password: registerInput.password,
         }
-
+        console.log("botao");
+    
         axios.get('sanctum/csrf-cookie').then(response => {
             axios.post(`api/register`, data).then(res => {
                 if(res.data.status === 200){
-
+                    localStorage.setItem('auth_token', res.data.token);
+                    localStorage.setItem('auth_name', res.data.username);
+                    swal("Success", res.data.message, "success");
+                    navigate('/');
                 }
                 else{
                     setRegister({...registerInput, error_list: res.data.validation_errors});
@@ -35,6 +45,9 @@ export default function Register() {
             });
         });
     }
+
+        
+    
 
   return (
     <div>
@@ -49,7 +62,7 @@ export default function Register() {
                             <form onSubmit={registerSubmit}>
                                 <div className='form-group mb-3'>
                                     <label>Nome</label>
-                                    <input type='' name='nome' onChange={handleInput} value={registerInput.name} className='form-control'  />
+                                    <input type='' name='name' onChange={handleInput} value={registerInput.name} className='form-control'  />
                                     <span>{registerInput.error_list.name}</span>
                                 </div>
                                 <div className='form-group mb-3'>
@@ -59,7 +72,7 @@ export default function Register() {
                                 </div>
                                 <div className='form-group mb-3'>
                                     <label>Senha</label>
-                                    <input type='' name='senha' onChange={handleInput} value={registerInput.password} className='form-control' />
+                                    <input type='' name='password' onChange={handleInput} value={registerInput.password} className='form-control' />
                                     <span>{registerInput.error_list.password}</span>
                                 </div>
         
