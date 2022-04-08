@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import AdminLTE, { Button } from 'adminlte-2-react';
 import { Link } from 'react-router-dom';
 
 export default function Read() {
@@ -53,15 +52,15 @@ export default function Read() {
                                 <td>{data.matricula}</td>
                                 <td>
                                     <Link to='/update'>
-                                        <Button
+                                        <button
                                             className="btn btn-success"
                                             onClick={() => setData(data.id, data.firstName, data.lastName)}>
                                             Update
-                                        </Button>
+                                        </button>
                                     </Link>
                                 </td>
                                 <td>
-                                    <Button className="btn btn-danger" onClick={() => onDelete(data.id)}>Delete</Button>
+                                    <button className="btn btn-danger" onClick={() => onDelete(data.id)}>Delete</button>
                                 </td>
                             </tr>
                         )

@@ -1,80 +1,37 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
-import AdminLTE, { Button } from 'adminlte-2-react';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
- 
-const api = axios.create({
-    baseURL: 'http://localhost:8000/api'
-  })
 
-export default class Create extends Component {
-    constructor(props) {
-        super(props);
-        this.onChangeNome = this.onChangeNome.bind(this);
-        this.onChangeMatricula = this.onChangeMatricula.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+export default function Api() {
 
-        this.state = {
-            nome: '',
-            matricula: '',
-        }
-    }
-
-    onChangeNome(e) {
-        this.setState({
-            nome: e.target.value
-        });
-    }
-
-    onChangeMatricula(e) {
-        this.setState({
-            matricula: e.target.value
-        });
-    }
-
-    onSubmit(e) {
-        e.preventDefault();
-
-        const obj = {
-            nome: this.state.nome,
-            matricula: this.state.matricula,
-        };
-
-        axios.post('http://localhost:8000/api/agentes', obj)
-            .then(res =>  
-                NotificationManager.success("Agente adicionado", 'Sucesso'));
-
-        this.setState({
-            nome: "",
-            matricula: "",
-        })
-
-        this.getRepo();
-    }
-
-    render() {
-        return (
-            <div style={{marginTop: 10}}>
-                <h3>Adicionar agente:</h3>
-                <form>
-                    <div className="form-group">
-                        <label>Nome: </label>
-                        <input type="text" className="form-control"
-                               value={this.state.nome}
-                               onChange={this.onChangeNome}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Matricula: </label>
-                        <input type="text" className="form-control" value={this.state.matricula}
-                               onChange={this.onChangeMatricula}/>
-                    </div>
-                    <div className="form-group">
-                        <Button text={"criar"} onClick={this.onSubmit} className="btn btn-primary btn-sm"/>
-                    </div>
-                </form>
-                <NotificationContainer/>
-            </div> 
+        return (<p>asdaaaaaaaaaaaaa</p>
+        //     <div className='container py-5'>
+        //     <div className='row justify-content-center'>
+        //         <div className='col-md-4'>
+        //             <div className='card'>
+        //                 <div className='card-header'>
+        //                     <h4 className='text-center'>Logar</h4>
+        //                 </div>
+        //                 <div className='card-body'>
+        //                     <form onSubmit={loginSubmit}>
+        //                         <div className='form-group mb-3'>
+        //                             <label>Email</label>
+        //                             <input type='email' name='email' onChange={handleInput} value={loginInput.email} className='form-control' />
+        //                             <span>{loginInput.error_list.email}</span>
+        //                         </div>
+        //                         <div className='form-group mb-3'>
+        //                             <label>Senha</label>
+        //                             <input type='password' name='password' onChange={handleInput} value={loginInput.password} className='form-control'/>
+        //                             <span>{loginInput.error_list.password}</span>
+        //                         </div>
+        //                         <div className='form-group mb-3 d-flex justify-content-center'>
+        //                                 <button type='submit' className='btn btn-primary'>Entrar</button>
+        //                         </div>
+        //                     </form>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
         )
-    }
+    
 }

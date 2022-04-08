@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AdminLTE, { Button } from 'adminlte-2-react';
 
 
 export default function Update() {
@@ -39,7 +38,7 @@ export default function Update() {
                         onChange={(e) => setMatricula(e.target.value)}
                     />
                 </div>
-                <Button text={'Editar'} onClick={sendDataToAPI}>Editar</Button>
+                <button text={'Editar'} onClick={sendDataToAPI}>Editar</button>
             </form>
         </div>
     )
